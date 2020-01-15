@@ -3,6 +3,8 @@
  */
 package com.springDemo1.employee.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public void addEmployee(Employee employee) {
 		
 		employeeDaoImpl.addEmployee(employee);
+	}
+	
+	
+	public List<Employee> getEmployees(){
+		
+		return employeeDaoImpl.getEmployees();
 	}
 }

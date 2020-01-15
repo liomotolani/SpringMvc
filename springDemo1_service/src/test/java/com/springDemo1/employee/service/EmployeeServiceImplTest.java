@@ -10,6 +10,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -52,7 +56,22 @@ public class EmployeeServiceImplTest {
 	@Test 
 	public void getEmployeeTest() {
 		
+		Employee tempEmployee = new Employee("Kunle", "Ade","kunleade@gmail.com");
 		
+		Employee tempEmployee1 = new Employee("lekan", "ola","lekunaola@gmail.com");
 		
+		Employee tempEmployee2 = new Employee("wale", "deola","waledeola@gmail.com");
+		
+		List<Employee> allEmployees =  new ArrayList<>();
+		
+		allEmployees.add(tempEmployee);
+		
+		allEmployees.add(tempEmployee1);
+		
+		allEmployees.add(tempEmployee2);
+		
+		when(employeeService.getEmployees()).thenReturn(allEmployees);
+		
+		verify(employeeService, times(1)).getEmployees();
 	}
 }
