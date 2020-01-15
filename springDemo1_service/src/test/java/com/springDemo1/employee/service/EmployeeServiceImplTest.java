@@ -72,6 +72,8 @@ public class EmployeeServiceImplTest {
 		
 		when(employeeService.getEmployees()).thenReturn(allEmployees);
 		
+		employeeService.getEmployees();
+		
 		verify(employeeService, times(1)).getEmployees();
 	}
 }
