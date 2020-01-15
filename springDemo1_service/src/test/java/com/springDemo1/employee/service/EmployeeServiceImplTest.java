@@ -13,8 +13,8 @@ import static org.mockito.Mockito.*;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.springDemo1.employee.service.EmployeeService;
 import com.springDemo1.entities.Employee;
-import com.springdemo.employee.service.EmployeeService;
 
 /**
  * @author user
@@ -47,5 +47,12 @@ public class EmployeeServiceImplTest {
 		employeeService.addEmployee(employee);
 		
 		verify(employeeService,times(1)).addEmployee(employee);
+	}
+	
+	@Test 
+	public void getEmployeeTest() {
+		
+		
+		
 	}
 }

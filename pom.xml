@@ -54,5 +54,6 @@
   <modules>
   	<module>springDemo1_data</module>
   	<module>springDemo1_service</module>
+  	<module>springDemo1_web</module>
   </modules>
 </project>

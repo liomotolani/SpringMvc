@@ -3,10 +3,12 @@
  */
 package com.springDemo1.dao;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,4 +39,53 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		currentSession.save(employee);
 		
 	}
+	
+	@Transactional 
+	public List<Employee> getEmployees(){
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		logger.info("Querying list of employees from the database");
+		
+		Query<Employee> theQuery = currentSession.createQuery("from Employee", Employee.class);
+		
+		List<Employee> employeeList = theQuery.getResultList();
+		
+		return employeeList;
+	}
+	
+	@Transactional
+	public Employee getEmployeeById(int id) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Employee theEmployee = currentSession.get(Employee.class, id);
+		
+		return theEmployee;
+
+		
+	}
+	
+	
+	@Transactional
+	public void updateEmployee(Employee employee) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+			
+		currentSession.update(employee);
+			
+		
+	}
+	
+	
+	@Transactional
+	public void deleteEmployee(Employee employee) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+			
+		currentSession.delete(employee);
+			
+		
+	}
+	
 }

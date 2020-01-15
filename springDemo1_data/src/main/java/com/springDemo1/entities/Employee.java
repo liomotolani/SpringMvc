@@ -24,6 +24,12 @@ public class Employee {
 	
 	@Column(name = "email")
 	private String email;
+	
+	
+
+	public Employee() {
+		
+	}
 
 	public Employee(String firstName, String lastName, String email) {
 		
