@@ -56,24 +56,50 @@ public class EmployeeServiceImplTest {
 	@Test 
 	public void getEmployeeTest() {
 		
-		Employee tempEmployee = new Employee("Kunle", "Ade","kunleade@gmail.com");
 		
-		Employee tempEmployee1 = new Employee("lekan", "ola","lekunaola@gmail.com");
-		
-		Employee tempEmployee2 = new Employee("wale", "deola","waledeola@gmail.com");
-		
-		List<Employee> allEmployees =  new ArrayList<>();
-		
-		allEmployees.add(tempEmployee);
-		
-		allEmployees.add(tempEmployee1);
-		
-		allEmployees.add(tempEmployee2);
-		
-		when(employeeService.getEmployees()).thenReturn(allEmployees);
+		when(employeeService.getEmployees()).thenReturn( new ArrayList<Employee>());
 		
 		employeeService.getEmployees();
 		
 		verify(employeeService, times(1)).getEmployees();
 	}
+	
+	
+	@Test
+	public void getEmployeeByIdTest() {
+		
+		when(employeeService.getEmployeeById(1)).thenReturn(isA(Employee.class));
+		
+		employeeService.getEmployeeById(1);
+		
+		verify(employeeService, times(1)).getEmployeeById(1);
+	}
+	
+	
+	@Test
+	public void updateEmployeeTest() {
+		Employee employee = new Employee("Peter","Kunle","jknumab@me.com");
+		
+		doNothing().when(employeeService).updateEmployee(isA(Employee.class));
+		
+		employeeService.updateEmployee(employee);
+		
+		verify(employeeService,times(1)).updateEmployee(employee);
+		
+	}
+	
+	
+	@Test
+	public void deleteEmployeeTest() {
+		
+		Employee employee = new Employee("Peter","Kunle","jknumab@me.com");
+		
+		doNothing().when(employeeService).deleteEmployee(isA(Employee.class));
+		
+		employeeService.deleteEmployee(employee);
+		
+		verify(employeeService,times(1)).deleteEmployee(employee);
+		
+	}
+	
 }

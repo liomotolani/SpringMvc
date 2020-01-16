@@ -1,17 +1,20 @@
 package com.springDemo1.controller.employee;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.WebApplicationContext;
-
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import com.springDemo1.employee.service.EmployeeService;
 import com.springDemo1.entities.Employee;
 
-@Controller
+@RestController
 public class EmployeeController {
 	
 	@Autowired
@@ -20,20 +23,32 @@ public class EmployeeController {
 	
 	
 	@PostMapping("/addEmployee")
-	public String addEmployee(@ModelAttribute("employee") Employee temployee) {
+	public Employee addEmployee(@RequestBody Employee temployee) {
 		
 		employeeServiceImpl.addEmployee(temployee);
 		
-		return "list-employees";
+		return temployee;
 	}
 	
-	@GetMapping("/showForm")
-	public String showFormForAdd(Model theModel) {
-		Employee theEmployee = new Employee();
+	
+	@GetMapping("/allEmployee")
+	public List<Employee> fetchAllEmployee(){
 		
-		theModel.addAttribute("employee", theEmployee);
-		
-		return "employee-form";
+		return employeeServiceImpl.getEmployees();
 	}
-
+	
+	@GetMapping("/employee/{id}")
+	public Employee fetchEmployee(@PathVariable int id) {
+		
+		return employeeServiceImpl.getEmployeeById(id);
+		
+	}
+	
+	@PutMapping("/employee/{id}")
+	public Employee updateEmployee(@RequestBody Employee employee, @PathVariable int id) {
+		
+		employeeServiceImpl.updateEmployee(employee);
+		
+		return employee;
+	}
 }

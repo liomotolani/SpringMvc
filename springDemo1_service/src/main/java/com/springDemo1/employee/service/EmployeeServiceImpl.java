@@ -3,6 +3,7 @@
  */
 package com.springDemo1.employee.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,20 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Employee> getEmployees(){
 		
 		return employeeDaoImpl.getEmployees();
+	}
+	
+	public Employee getEmployeeById(int employeeId) {
+		
+		 return employeeDaoImpl.getEmployeeById(employeeId);
+	}
+	
+	public void updateEmployee(Employee employee) {
+		
+		employeeDaoImpl.updateEmployee(employee);
+	}
+	
+	public void deleteEmployee(Employee employee) {
+		
+		employeeDaoImpl.deleteEmployee(employee);
 	}
 }

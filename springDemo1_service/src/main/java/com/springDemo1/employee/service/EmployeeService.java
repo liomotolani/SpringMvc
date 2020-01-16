@@ -9,4 +9,11 @@ public interface EmployeeService {
 	public void addEmployee(Employee employee);
 	
 	public List<Employee> getEmployees();
+	
+	public Employee getEmployeeById(int id);
+	
+	public void updateEmployee(Employee employee);
+	
+	public void deleteEmployee(Employee employee);
+	
 }
