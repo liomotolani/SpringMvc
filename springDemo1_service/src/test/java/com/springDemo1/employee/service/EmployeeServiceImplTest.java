@@ -92,13 +92,13 @@ public class EmployeeServiceImplTest {
 	@Test
 	public void deleteEmployeeTest() {
 		
-		Employee employee = new Employee("Peter","Kunle","jknumab@me.com");
 		
-		doNothing().when(employeeService).deleteEmployee(isA(Employee.class));
 		
-		employeeService.deleteEmployee(employee);
+		doNothing().when(employeeService).deleteEmployee(isA(int.class));
 		
-		verify(employeeService,times(1)).deleteEmployee(employee);
+		employeeService.deleteEmployee(1);
+		
+		verify(employeeService,times(1)).deleteEmployee(1);
 		
 	}
 	

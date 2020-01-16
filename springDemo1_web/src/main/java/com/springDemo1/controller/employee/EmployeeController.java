@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,11 +45,21 @@ public class EmployeeController {
 		
 	}
 	
-	@PutMapping("/employee/{id}")
-	public Employee updateEmployee(@RequestBody Employee employee, @PathVariable int id) {
+	@PutMapping("/updateEmployee/{employeeId}")
+	public Employee updateEmployee( @PathVariable int employeeId,@RequestBody Employee employee) {
+		
+//		employee.setId(employeeId);
 		
 		employeeServiceImpl.updateEmployee(employee);
 		
 		return employee;
+	}
+	
+	@DeleteMapping("/employee/{id}")
+	public void deleteEmployee(@PathVariable int id) {
+		
+		employeeServiceImpl.deleteEmployee(id);
+		
+		
 	}
 }

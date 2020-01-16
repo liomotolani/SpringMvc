@@ -43,8 +43,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeDaoImpl.updateEmployee(employee);
 	}
 	
-	public void deleteEmployee(Employee employee) {
+	public void deleteEmployee(int employeeId) {
 		
-		employeeDaoImpl.deleteEmployee(employee);
+		employeeDaoImpl.deleteEmployee(employeeId);
 	}
 }
